@@ -219,5 +219,43 @@ header.header {
     }
 }
 
+/* =========================================================
+   Tools logos (blue band)
+   ========================================================= */
+
+.tools-logos {
+    gap: 2rem;
+}
+
+/* Individual logo container */
+.tool-logo {
+    height: 60px;               /* <- single source of truth */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.95); /* solves non-transparent logos */
+    border-radius: 6px;
+}
+
+/* Logo images */
+.tool-logo img {
+    max-height: 100%;
+    max-width: 140px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Mobile tweaks */
+@media (max-width: 576px) {
+    .tool-logo {
+        height: 48px;
+        padding: 0.4rem;
+    }
+
+    .tool-logo img {
+        max-width: 120px;
+    }
+}
 
 

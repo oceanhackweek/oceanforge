@@ -21,124 +21,6 @@
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/main.css">
-
-    <style>
-        /*
-          Two-panel hero:
-          - Left: dark panel with lettering
-          - Right: background image
-          - Mobile: stack (panel on top, image below)
-          - Tiny screens: optionally hide image for a clean text-first hero
-        */
-
-        /* Ensure the carousel item has height for the absolute-positioned split */
-        .hero-carousel .carousel-item {
-            position: relative;
-            min-height: 520px;
-        }
-
-        /* Split layout */
-        .hero-split {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-
-        /* Left: text panel */
-        .hero-panel-text {
-            background: #000;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            padding: 3rem;
-        }
-
-        .hero-panel-inner {
-            max-width: 520px;
-        }
-
-        /* Typography inside panel */
-        .hero-panel-kicker {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            opacity: 0.85;
-            margin-bottom: 0.75rem;
-        }
-
-        .hero-panel-title {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 800;
-            line-height: 1.05;
-            margin: 0 0 1rem 0;
-            /* Responsive size */
-            font-size: clamp(2.0rem, 4vw, 3.2rem);
-        }
-
-        .hero-panel-meta {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            margin-bottom: 0.6rem;
-        }
-
-        .hero-panel-desc {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            margin: 1rem 0 1.25rem 0;
-        }
-
-        .hero-panel-cta a.btn {
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Right: image panel */
-        .hero-panel-image {
-            background: url("{{ cookiecutter.banner['image'] }}") no-repeat center center;
-            background-size: cover;
-        }
-
-        /* Keep your existing hero text block, but hide it so you don't get duplicate headings.
-           (We moved the hero text into the left panel.)
-        */
-        .hero-text-block {
-            display: none;
-        }
-
-        /* Mobile: stack panels */
-        @media (max-width: 768px) {
-            .hero-carousel .carousel-item {
-                min-height: 620px;
-            }
-
-            .hero-split {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto 1fr;
-            }
-
-            .hero-panel-text {
-                padding: 2rem 1.5rem;
-            }
-
-            .hero-panel-inner {
-                max-width: none;
-            }
-        }
-
-        /* Very small phones: text-only hero (optional) */
-        @media (max-width: 420px) {
-            .hero-carousel .carousel-item {
-                min-height: 520px;
-            }
-
-            .hero-panel-image {
-                display: none;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -154,10 +36,10 @@
                     </a>
                 </div>
 
-                {%- if 'apply' in cookiecutter %}
+                {%- if cookiecutter.apply is defined %}
                 <div class="navbar-btn order-lg-2">
                     <a class="btn btn-secondary"
-                       {%- if 'url' in cookiecutter.apply %}
+                       {%- if cookiecutter.apply.url is defined and cookiecutter.apply.url %}
                        href="{{ cookiecutter.apply.url }}"
                        target="_blank"
                        {%- endif %}
@@ -175,7 +57,7 @@
                 </button>
 
                 <div id="navigation"
-                     class="navbar-collapse collapse  justify-content-lg-end me-lg-3">
+                     class="navbar-collapse collapse justify-content-lg-end me-lg-3">
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link scrollto" href="#about-section">
@@ -197,73 +79,104 @@
 </header>
 
 <div id="hero-block" class="hero-block">
-    <div id="hero-carousel" class="hero-carousel carousel slide carousel-fade"
-         data-ride="carousel">
+    <div id="hero-carousel"
+         class="hero-carousel carousel slide carousel-fade"
+         data-bs-ride="carousel"
+         data-bs-interval="{{ cookiecutter.banner.interval_ms | default(5000) }}"
+         data-bs-pause="false">
+
         <div class="carousel-inner">
-            <div class="carousel-item carousel-item active">
 
-                <!-- NEW: split hero -->
-                <div class="hero-split" aria-hidden="true">
-                    <!-- Left: black panel -->
-                    <div class="hero-panel-text">
-                        <div class="hero-panel-inner">
-                            <div class="hero-panel-kicker">
-                                {{ cookiecutter.name }}
+            {%- set slides = cookiecutter.banner.images if cookiecutter.banner.images is defined else [] %}
+
+            {%- if slides|length > 0 %}
+                {%- for img in slides %}
+                <div class="carousel-item {% if loop.first %}active{% endif %}">
+                    <div class="hero-split" aria-hidden="true">
+                        <!-- Left: black panel -->
+                        <div class="hero-panel-text">
+                            <div class="hero-panel-inner">
+                                <div class="hero-panel-kicker">
+                                    {{ cookiecutter.name }}
+                                </div>
+
+                                <h1 class="hero-panel-title">
+                                    {{ cookiecutter.name }}
+                                </h1>
+
+                                <div class="hero-panel-desc">
+                                    {{ cookiecutter.banner.description }}
+                                </div>
+
+                                {%- if cookiecutter.banner.links is defined and cookiecutter.banner.links %}
+                                <div class="hero-panel-cta">
+                                    {%- for link in cookiecutter.banner.links %}
+                                    <a class="btn {{ link.style }} btn-lg"
+                                       href="{{ link.url }}"
+                                       {{ 'target="_blank"' if link.new_window else '' }}
+                                    >
+                                    {{ link.title }}
+                                    </a>
+                                    {%- endfor %}
+                                </div>
+                                {%- endif %}
                             </div>
-
-                            <h1 class="hero-panel-title">
-                                {{ cookiecutter.name }} {{ cookiecutter.banner.year }}
-                            </h1>
-
-                            <div class="hero-panel-meta">
-                                <i class="far fa-calendar-alt me-2"></i>
-                                {{ cookiecutter.banner.start_date }} - {{ cookiecutter.banner.end_date }}
-                            </div>
-
-                            <div class="hero-panel-meta">
-                                <i class="fas fa-map-marker-alt me-2"></i>
-                                {{ cookiecutter.banner.location }}
-                            </div>
-
-                            <div class="hero-panel-desc">
-                                {{ cookiecutter.banner.description }}
-                            </div>
-
-                            {%- if cookiecutter.banner.links %}
-                            <div class="hero-panel-cta">
-                                {%- for link in cookiecutter.banner.links %}
-                                <a class="btn {{ link.style }} btn-lg"
-                                   href="{{ link.url }}"
-                                   {{ 'target="_blank"' if link.new_window else '' }}
-                                >
-                                {{ link.title }}
-                                </a>
-                                {%- endfor %}
-                            </div>
-                            {%- endif %}
                         </div>
+
+                        <!-- Right: rotating image -->
+                        <div class="hero-panel-image" style="background-image: url('{{ img }}');"></div>
                     </div>
-
-                    <!-- Right: photo -->
-                    <div class="hero-panel-image"></div>
                 </div>
-                <!-- /NEW split hero -->
+                {%- endfor %}
+            {%- else %}
+                <!-- Fallback if no images list is provided -->
+                <div class="carousel-item active">
+                    <div class="hero-split" aria-hidden="true">
+                        <div class="hero-panel-text">
+                            <div class="hero-panel-inner">
+                                <div class="hero-panel-kicker">{{ cookiecutter.name }}</div>
+                                <h1 class="hero-panel-title">{{ cookiecutter.name }}</h1>
+                                <div class="hero-panel-desc">{{ cookiecutter.banner.description }}</div>
 
-            </div>
+                                {%- if cookiecutter.banner.links is defined and cookiecutter.banner.links %}
+                                <div class="hero-panel-cta">
+                                    {%- for link in cookiecutter.banner.links %}
+                                    <a class="btn {{ link.style }} btn-lg"
+                                       href="{{ link.url }}"
+                                       {{ 'target="_blank"' if link.new_window else '' }}>
+                                        {{ link.title }}
+                                    </a>
+                                    {%- endfor %}
+                                </div>
+                                {%- endif %}
+                            </div>
+                        </div>
+
+                        <!-- No image panel -->
+                        <div class="hero-panel-image" style="background-color: #141c25;"></div>
+                    </div>
+                </div>
+            {%- endif %}
+
         </div>
+
+        <!-- Controls (optional but nice) -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev" aria-label="Previous slide">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next" aria-label="Next slide">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+
     </div>
 
-    <!-- Keep mask for any existing theme effects (not required for readability now) -->
     <div class="hero-block-mask"></div>
 
     <div class="container">
         <div class="hero-text-block">
-            <!-- Hidden via CSS to avoid duplicate hero content -->
+            <!-- Hidden via main.css; kept for theme compatibility -->
         </div>
-        <!--//hero-text-block-->
     </div>
-    <!--//container-->
-
 </div>
 <!--//hero-block-->
 
@@ -275,23 +188,6 @@
         <div class="section-intro single-col-max mx-auto mb-3">
             {{ cookiecutter.about.description }}
         </div>
-
-        {%- if 'links' in cookiecutter.about %}
-            <div class="hero-cta text-center mb-4">
-                <h4 class="mb-3 text-center">
-                    Past Events:
-                </h4>
-                {%- for link in cookiecutter.about.links %}
-                    <a class="btn btn-primary btn-lg mb-3 mx-2"
-                       href="{{ link.url }}"
-                        {{ 'target="_blank"' if link.new_window == 'True' else '' }}
-                    >
-                        {{ link.title }}
-                    </a>
-                {%- endfor %}
-            </div>
-        {%- endif %}
-
     </div>
 
     <div class="media-block theme-bg-primary py-5">
@@ -301,7 +197,6 @@
             </h4>
         </div>
     </div>
-
 </section>
 <!--//about-section-->
 
@@ -309,51 +204,50 @@
     <hr>
 </div>
 
-{%- if cookiecutter.sponsors %}
+{%- if cookiecutter.sponsors is defined and cookiecutter.sponsors %}
 <section id="sponsors-section" class="sponsors-section section theme-bg-light">
     <div class="container">
         <h3 class="section-heading text-center mb-3">Our Sponsors and Partners</h3>
+
+        {%- if cookiecutter.sponsors.description is defined and cookiecutter.sponsors.description %}
         <div class="section-intro text-center single-col-max mx-auto mb-5">
-            {{ cookiecutter.sponsors['description'] }}
+            {{ cookiecutter.sponsors.description }}
         </div>
-        {%- if cookiecutter.sponsors['organizations']|length > 0 %}
+        {%- endif %}
+
+        {%- if cookiecutter.sponsors.organizations is defined and cookiecutter.sponsors.organizations|length > 0 %}
         <div class="row logos justify-content-center">
-            {%- for org in cookiecutter.sponsors['organizations'] %}
+            {%- for org in cookiecutter.sponsors.organizations %}
             <div class="logo-item col-6 col-md-4 col-lg-2">
-                {%- if org['website'] %}
-                <a href="{{ org['website'] }}" target="_blank"><img
-                    src="{{ org['logo_url'] }}"
-                    alt="{{ org['name'] }}"></a>
+                {%- if org.website %}
+                <a href="{{ org.website }}" target="_blank"><img
+                    src="{{ org.logo_url }}"
+                    alt="{{ org.name }}"></a>
                 {%- else %}
-                <img src="{{ org['logo_url'] }}" alt="{{ org['name'] }}">
+                <img src="{{ org.logo_url }}" alt="{{ org.name }}">
                 {%- endif %}
             </div>
             {%- endfor %}
         </div>
         {%- endif %}
-        <!--//row-->
     </div>
-    <!--//container-->
 </section>
-<!--//sponsors-section-->
 {%- endif %}
 
 <footer class="footer py-5 theme-bg-primary">
     <div class="container text-center">
-        {%- if cookiecutter.footer['social']|length > 0 %}
+        {%- if cookiecutter.footer.social is defined and cookiecutter.footer.social|length > 0 %}
         <ul class="social-list list-inline mb-4">
-            {%- for soc in cookiecutter.footer['social'] %}
+            {%- for soc in cookiecutter.footer.social %}
             <li class="list-inline-item me-3">
-                <a href="{{ soc['link'] }}">
-                    <i class="fab fa-{{ soc['icon'] }}"></i>
+                <a href="{{ soc.link }}">
+                    <i class="fab fa-{{ soc.icon }}"></i>
                 </a>
             </li>
             {%- endfor %}
         </ul>
-        <!--//social-list-->
         {%- endif %}
 
-        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
         <small class="copyright">©
             <script type="text/javascript">
                 document.write(new Date().getFullYear());
@@ -381,4 +275,5 @@
 </body>
 
 </html>
+
 

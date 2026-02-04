@@ -28,13 +28,8 @@
     <div class="branding">
         <div class="container-fluid">
             <nav class="main-nav navbar navbar-expand-lg">
-                <div class="site-logo">
-                    <a class="scrollto" href="#hero-block">
-                        <span class="logo-icon-text">
-                            {{ cookiecutter.name }}
-                        </span>
-                    </a>
-                </div>
+
+                {# Removed top-left site logo/brand #}
 
                 {%- if cookiecutter.apply is defined %}
                 <div class="navbar-btn order-lg-2">
@@ -83,11 +78,26 @@
          class="hero-carousel carousel slide carousel-fade"
          data-bs-ride="carousel"
          data-bs-interval="{{ cookiecutter.banner.interval_ms | default(5000) }}"
-         data-bs-pause="false">
+         data-bs-pause="false"
+         data-bs-touch="false">
 
         <div class="carousel-inner">
 
-            {%- set slides = cookiecutter.banner.image if cookiecutter.banner.image is defined else [] %}
+            {# Normalize slides:
+               - Prefer banner.image (string or list)
+               - Else fall back to banner.images (list)
+            #}
+            {%- set slides = [] %}
+
+            {%- if cookiecutter.banner.image is defined and cookiecutter.banner.image %}
+                {%- if cookiecutter.banner.image is string %}
+                    {%- set slides = [cookiecutter.banner.image] %}
+                {%- else %}
+                    {%- set slides = cookiecutter.banner.image %}
+                {%- endif %}
+            {%- elif cookiecutter.banner.images is defined and cookiecutter.banner.images %}
+                {%- set slides = cookiecutter.banner.images %}
+            {%- endif %}
 
             {%- if slides|length > 0 %}
                 {%- for img in slides %}
@@ -96,9 +106,8 @@
                         <!-- Left: black panel -->
                         <div class="hero-panel-text">
                             <div class="hero-panel-inner">
-                                <div class="hero-panel-kicker">
-                                    {{ cookiecutter.name }}
-                                </div>
+
+                                {# Removed the extra "OceanForge" kicker line #}
 
                                 <h1 class="hero-panel-title">
                                     {{ cookiecutter.name }}
@@ -123,18 +132,17 @@
                             </div>
                         </div>
 
-                        <!-- Right: rotating image -->
+                        <!-- Right: image -->
                         <div class="hero-panel-image" style="background-image: url('{{ img }}');"></div>
                     </div>
                 </div>
                 {%- endfor %}
             {%- else %}
-                <!-- Fallback if no images list is provided -->
+                <!-- Fallback if no images provided -->
                 <div class="carousel-item active">
                     <div class="hero-split" aria-hidden="true">
                         <div class="hero-panel-text">
                             <div class="hero-panel-inner">
-                                <div class="hero-panel-kicker">{{ cookiecutter.name }}</div>
                                 <h1 class="hero-panel-title">{{ cookiecutter.name }}</h1>
                                 <div class="hero-panel-desc">{{ cookiecutter.banner.description }}</div>
 
@@ -152,7 +160,6 @@
                             </div>
                         </div>
 
-                        <!-- No image panel -->
                         <div class="hero-panel-image" style="background-color: #141c25;"></div>
                     </div>
                 </div>
@@ -160,13 +167,7 @@
 
         </div>
 
-        <!-- Controls (optional but nice) -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
+        {# Removed carousel controls (arrows) #}
 
     </div>
 
@@ -273,7 +274,6 @@
 <script defer src="assets/js/main.js"></script>
 
 </body>
-
 </html>
 
 

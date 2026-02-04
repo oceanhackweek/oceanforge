@@ -156,6 +156,14 @@ header.header {
     display: none;
 }
 
+/* =========================================================
+   About section text alignment
+   ========================================================= */
+
+#about-section .section-intro {
+    text-align: center;
+}
+
 
 /* =========================================================
    Responsive behavior

@@ -1,15 +1,15 @@
 repo_directory: html
 name: OceanForge
-favicon: assets/images/favicon-16x16.png
+favicon: assets/images/logos/favicon-96x96.png
 #apply:
 #  url: https://forms.gle/4DEZMv2CxyyR6Cxz9
 #  title: Applications Closed
 banner:
-  description: A JupyterHub for Ocean Science Training.
+  description: A JupyterHub for Ocean Data Science Training.
   image:
     - assets/images/eastcoast_PACE_OCI_20240502T172807.png
     - assets/images/argo_buoy.jpeg
-  interval_ms: 5000
+  interval_ms: 2000
   banner:
   links:
   - url: intro.html

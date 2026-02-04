@@ -79,6 +79,7 @@ header.header {
 .hero-panel-inner {
     text-align: center;
     max-width: 560px;
+    position: relative;
 }
 
 /* Kill any theme-driven "ghosting" / opacity / gradients */
@@ -205,6 +206,7 @@ header.header {
 
     .hero-panel-inner {
         max-width: none;
+        position: relative;
     }
 
     .hero-panel-title {

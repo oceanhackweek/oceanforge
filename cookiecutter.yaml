@@ -70,4 +70,13 @@ i18n:
     about_description: |
       Un entorno compartido, nativo de la nube, para científicos del océano — diseñado para usuarios de Python y R y para apoyar la capacitación en flujos de trabajo modernos de datos oceánicos.<br><br>
       A medida que la ciencia oceánica entra en una era de flujos de datos masivos y continuos — que abarcan teledetección, sistemas de observación autónomos y *in situ*, grandes salidas de modelos y acústica pasiva — OceanForge ofrece un entorno de cómputo preconfigurado para capacitaciones y hackatones de ciencia de datos oceánicos.
-
+    banner:
+      links:
+        - url: ''
+          title: Documentación
+          new_window: false
+          style: btn-primary
+        - url: ''
+          title: JupyterHub
+          new_window: false
+          style: btn-primary

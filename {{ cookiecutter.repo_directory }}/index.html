@@ -24,57 +24,6 @@
 </head>
 
 <body>
-<header id="header" class="header fixed-top">
-    <div class="branding">
-        <div class="container-fluid">
-            <nav class="main-nav navbar navbar-expand-lg">
-                <div class="lang-switch ms-auto">
-                    <a href="index-es.html">ES</a>
-                </div>
-
-                {# No top-left brand/logo #}
-
-                {%- if cookiecutter.apply is defined %}
-                <div class="navbar-btn order-lg-2">
-                    <a class="btn btn-secondary"
-                       {%- if cookiecutter.apply.url is defined and cookiecutter.apply.url %}
-                       href="{{ cookiecutter.apply.url }}"
-                       target="_blank"
-                       {%- endif %}
-                    >
-                    {{ cookiecutter.apply.title }}
-                    </a>
-                </div>
-                {%- endif %}
-
-                <button class="navbar-toggler" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#navigation"
-                        aria-controls="navigation" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div id="navigation"
-                     class="navbar-collapse collapse justify-content-lg-end me-lg-3">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link scrollto" href="#about-section">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link scrollto" href="#sponsors-section">
-                                Sponsors and Partners
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <!--//main-nav-->
-        </div>
-    </div>
-    <!--//branding-->
-</header>
 
 <div id="hero-block" class="hero-block">
     <div id="hero-carousel"
@@ -93,9 +42,15 @@
                         <!-- Left: black panel -->
                         <div class="hero-panel-text">
                             <div class="hero-panel-inner">
-<!--                            <h1 class="hero-panel-title">{{ cookiecutter.name }}</h1>   -->
+                            
+                              <div class="lang-switch hero-lang-switch">
+                                <a href="index.html" aria-current="page">EN</a>
+                                <span class="lang-sep">|</span>
+                                <a href="index-es.html">ES</a>
+                              </div>
+                        
                             <div class="hero-logo-wrap">
-                                <img
+                              <img
                                     src="assets/images/logos/oceanforge.png"
                                     alt="{{ cookiecutter.name }} logo"
                                     class="hero-logo"

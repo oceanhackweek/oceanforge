@@ -108,7 +108,14 @@
 
                                 {%- if cookiecutter.banner.links is defined and cookiecutter.banner.links %}
                                 <div class="hero-panel-cta">
-                                    {%- for link in cookiecutter.banner.links %}
+                                    {%- set banner_links = cookiecutter.i18n.es.banner.links
+                                        if cookiecutter.i18n is defined
+                                        and cookiecutter.i18n.es is defined
+                                        and cookiecutter.i18n.es.banner is defined
+                                        and cookiecutter.i18n.es.banner.links is defined
+                                        else cookiecutter.banner.links %}
+                                    
+                                    {%- for link in banner_links %}
                                     <a class="btn {{ link.style }} btn-lg"
                                        href="{{ link.url }}"
                                        {{ 'target="_blank"' if link.new_window else '' }}

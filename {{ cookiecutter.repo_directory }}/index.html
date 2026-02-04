@@ -87,7 +87,7 @@
 
         <div class="carousel-inner">
 
-            {%- set slides = cookiecutter.banner.images if cookiecutter.banner.images is defined else [] %}
+            {%- set slides = cookiecutter.banner.image if cookiecutter.banner.image is defined else [] %}
 
             {%- if slides|length > 0 %}
                 {%- for img in slides %}

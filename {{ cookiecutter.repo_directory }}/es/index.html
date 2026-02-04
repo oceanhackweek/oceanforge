@@ -164,14 +164,14 @@
 <!--//hero-block-->
 
 <section id="about-section" class="about-section section theme-bg-light">
-    <div class="container">
-        <h3 class="section-heading text-center mb-3">
-            About {{ cookiecutter.name }}
-        </h3>
-        <div class="section-intro single-col-max mx-auto mb-3">
-            {{ cookiecutter.about.description }}
-        </div>
+  <div class="container">
+    <h3 class="section-heading text-center mb-3">
+      {{ cookiecutter.i18n.es.about_title }}
+    </h3>
+    <div class="section-intro single-col-max mx-auto mb-3">
+      {{ cookiecutter.i18n.es.about_description }}
     </div>
+  </div>
 
     {%- if cookiecutter.tools is defined
           and cookiecutter.tools["items"] is defined

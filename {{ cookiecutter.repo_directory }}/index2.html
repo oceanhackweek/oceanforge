@@ -23,120 +23,9 @@
     <link rel="stylesheet" href="assets/css/main.css">
 
     <style>
-        /*
-          Two-panel hero:
-          - Left: dark panel with lettering
-          - Right: background image
-          - Mobile: stack (panel on top, image below)
-          - Tiny screens: optionally hide image for a clean text-first hero
-        */
-
-        /* Ensure the carousel item has height for the absolute-positioned split */
-        .hero-carousel .carousel-item {
-            position: relative;
-            min-height: 520px;
-        }
-
-        /* Split layout */
-        .hero-split {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-
-        /* Left: text panel */
-        .hero-panel-text {
-            background: #000;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            padding: 3rem;
-        }
-
-        .hero-panel-inner {
-            max-width: 520px;
-        }
-
-        /* Typography inside panel */
-        .hero-panel-kicker {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            opacity: 0.85;
-            margin-bottom: 0.75rem;
-        }
-
-        .hero-panel-title {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 800;
-            line-height: 1.05;
-            margin: 0 0 1rem 0;
-            /* Responsive size */
-            font-size: clamp(2.0rem, 4vw, 3.2rem);
-        }
-
-        .hero-panel-meta {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            margin-bottom: 0.6rem;
-        }
-
-        .hero-panel-desc {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            margin: 1rem 0 1.25rem 0;
-        }
-
-        .hero-panel-cta a.btn {
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Right: image panel */
-        .hero-panel-image {
-            background: url("{{ cookiecutter.banner['image'] }}") no-repeat center center;
+        .hero-carousel .carousel-item-1 {
+            background: url("{{cookiecutter.banner['image']}}") no-repeat center center;
             background-size: cover;
-        }
-
-        /* Keep your existing hero text block, but hide it so you don't get duplicate headings.
-           (We moved the hero text into the left panel.)
-        */
-        .hero-text-block {
-            display: none;
-        }
-
-        /* Mobile: stack panels */
-        @media (max-width: 768px) {
-            .hero-carousel .carousel-item {
-                min-height: 620px;
-            }
-
-            .hero-split {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto 1fr;
-            }
-
-            .hero-panel-text {
-                padding: 2rem 1.5rem;
-            }
-
-            .hero-panel-inner {
-                max-width: none;
-            }
-        }
-
-        /* Very small phones: text-only hero (optional) */
-        @media (max-width: 420px) {
-            .hero-carousel .carousel-item {
-                min-height: 520px;
-            }
-
-            .hero-panel-image {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -200,65 +89,39 @@
     <div id="hero-carousel" class="hero-carousel carousel slide carousel-fade"
          data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item carousel-item active">
-
-                <!-- NEW: split hero -->
-                <div class="hero-split" aria-hidden="true">
-                    <!-- Left: black panel -->
-                    <div class="hero-panel-text">
-                        <div class="hero-panel-inner">
-                            <div class="hero-panel-kicker">
-                                {{ cookiecutter.name }}
-                            </div>
-
-                            <h1 class="hero-panel-title">
-                                {{ cookiecutter.name }} {{ cookiecutter.banner.year }}
-                            </h1>
-
-                            <div class="hero-panel-meta">
-                                <i class="far fa-calendar-alt me-2"></i>
-                                {{ cookiecutter.banner.start_date }} - {{ cookiecutter.banner.end_date }}
-                            </div>
-
-                            <div class="hero-panel-meta">
-                                <i class="fas fa-map-marker-alt me-2"></i>
-                                {{ cookiecutter.banner.location }}
-                            </div>
-
-                            <div class="hero-panel-desc">
-                                {{ cookiecutter.banner.description }}
-                            </div>
-
-                            {%- if cookiecutter.banner.links %}
-                            <div class="hero-panel-cta">
-                                {%- for link in cookiecutter.banner.links %}
-                                <a class="btn {{ link.style }} btn-lg"
-                                   href="{{ link.url }}"
-                                   {{ 'target="_blank"' if link.new_window else '' }}
-                                >
-                                {{ link.title }}
-                                </a>
-                                {%- endfor %}
-                            </div>
-                            {%- endif %}
-                        </div>
-                    </div>
-
-                    <!-- Right: photo -->
-                    <div class="hero-panel-image"></div>
-                </div>
-                <!-- /NEW split hero -->
-
+            <div class="carousel-item-1 carousel-item active">
             </div>
         </div>
     </div>
-
-    <!-- Keep mask for any existing theme effects (not required for readability now) -->
     <div class="hero-block-mask"></div>
-
     <div class="container">
         <div class="hero-text-block">
-            <!-- Hidden via CSS to avoid duplicate hero content -->
+            <h1 class="hero-heading mb-2">
+                {{ cookiecutter.name }} {{ cookiecutter.banner.year }}
+            </h1>
+            <div class="hero-meta mb-3">
+                <i class="far fa-calendar-alt me-2"></i>
+                {{ cookiecutter.banner.start_date }} - {{ cookiecutter.banner.end_date }}
+            </div>
+            <div class="hero-meta mb-3">
+                <i class="fas fa-map-marker-alt me-2"></i>
+                {{ cookiecutter.banner.location }}
+            </div>
+            <div class="hero-intro mb-4">
+                {{ cookiecutter.banner.description }}
+            </div>
+            {%- if cookiecutter.banner.links %}
+            <div class="hero-cta">
+                {%- for link in cookiecutter.banner.links %}
+                <a class="btn {{ link.style }} btn-lg m-2"
+                   href="{{ link.url }}"
+                   {{ 'target="_blank"' if link.new_window else '' }}
+                >
+                {{ link.title }}
+                </a>
+                {%- endfor %}
+            </div>
+            {%- endif %}
         </div>
         <!--//hero-text-block-->
     </div>
@@ -275,7 +138,7 @@
         <div class="section-intro single-col-max mx-auto mb-3">
             {{ cookiecutter.about.description }}
         </div>
-
+        
         {%- if 'links' in cookiecutter.about %}
             <div class="hero-cta text-center mb-4">
                 <h4 class="mb-3 text-center">
@@ -301,7 +164,7 @@
             </h4>
         </div>
     </div>
-
+            
 </section>
 <!--//about-section-->
 
@@ -381,4 +244,3 @@
 </body>
 
 </html>
-

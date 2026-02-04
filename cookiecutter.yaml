@@ -1,11 +1,11 @@
 repo_directory: html
-name: Fish-PACE Hackweek
+name: OceanJHub
 favicon: assets/images/favicon-16x16.png
 #apply:
 #  url: https://forms.gle/4DEZMv2CxyyR6Cxz9
 #  title: Applications Closed
 banner:
-  description: A hands-on, community-driven event.
+  description: A JupyterHub for Ocean Science Training.
   images:
     - assets/images/eastcoast_PACE_OCI_20240502T172807.png
     - assets/images/argo_buoy.jpeg
@@ -22,10 +22,6 @@ banner:
     style: btn-primary
 about:
   description: A collaborative compute platform to advance ocean science (oceanography, biological oceanography, ocean ecosystem and fisheries) by promoting trainings and hackweeks with ocean observing data. A project of the global ocean hackweek community.
-team:
-  !include team/team.yaml
-schedule:
-  !include book/schedule.yaml
 sponsors:
   description: ''
   organizations:
@@ -41,7 +37,7 @@ sponsors:
 footer:
   social:
   - icon: github
-    link: https://github.com/fish-pace
+    link: https://github.com/oceanhackweek
 _copy_without_render:
 - assets
 _extensions:

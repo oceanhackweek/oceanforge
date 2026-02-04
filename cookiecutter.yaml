@@ -21,7 +21,10 @@ banner:
     new_window: false
     style: btn-primary
 about:
-  description: A collaborative compute platform to advance ocean science (oceanography, biological oceanography, ocean ecosystem and fisheries) by promoting trainings and hackweeks with ocean observing data. A project of the global ocean hackweek community.
+  description:  |
+    A shared, cloud-native computing environment for ocean scientists — designed for Python and R users to support training in modern ocean data workflows.
+
+    As ocean science enters an era of massive, continuous data streams — spanning remote sensing, autonomous and in situ observing systems, large model outputs, and passive acoustics — OceanForge provides a pre-configured compute environment for ocean data science training and hackathons.
 sponsors:
   description: ''
   organizations:

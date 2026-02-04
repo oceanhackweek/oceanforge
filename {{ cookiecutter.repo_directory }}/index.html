@@ -29,7 +29,7 @@
         <div class="container-fluid">
             <nav class="main-nav navbar navbar-expand-lg">
 
-                {# Removed top-left site logo/brand #}
+                {# No top-left brand/logo #}
 
                 {%- if cookiecutter.apply is defined %}
                 <div class="navbar-btn order-lg-2">
@@ -83,32 +83,13 @@
 
         <div class="carousel-inner">
 
-            {# Normalize slides:
-               - Prefer banner.image (string or list)
-               - Else fall back to banner.images (list)
-            #}
-            {%- set slides = [] %}
-
-            {%- if cookiecutter.banner.image is defined and cookiecutter.banner.image %}
-                {%- if cookiecutter.banner.image is string %}
-                    {%- set slides = [cookiecutter.banner.image] %}
-                {%- else %}
-                    {%- set slides = cookiecutter.banner.image %}
-                {%- endif %}
-            {%- elif cookiecutter.banner.images is defined and cookiecutter.banner.images %}
-                {%- set slides = cookiecutter.banner.images %}
-            {%- endif %}
-
-            {%- if slides|length > 0 %}
-                {%- for img in slides %}
+            {%- if cookiecutter.banner.image is defined and cookiecutter.banner.image|length > 0 %}
+                {%- for img in cookiecutter.banner.image %}
                 <div class="carousel-item {% if loop.first %}active{% endif %}">
                     <div class="hero-split" aria-hidden="true">
                         <!-- Left: black panel -->
                         <div class="hero-panel-text">
                             <div class="hero-panel-inner">
-
-                                {# Removed the extra "OceanForge" kicker line #}
-
                                 <h1 class="hero-panel-title">
                                     {{ cookiecutter.name }}
                                 </h1>
@@ -132,13 +113,12 @@
                             </div>
                         </div>
 
-                        <!-- Right: image -->
+                        <!-- Right: rotating image -->
                         <div class="hero-panel-image" style="background-image: url('{{ img }}');"></div>
                     </div>
                 </div>
                 {%- endfor %}
             {%- else %}
-                <!-- Fallback if no images provided -->
                 <div class="carousel-item active">
                     <div class="hero-split" aria-hidden="true">
                         <div class="hero-panel-text">
@@ -166,9 +146,7 @@
             {%- endif %}
 
         </div>
-
-        {# Removed carousel controls (arrows) #}
-
+        {# No carousel arrows/controls #}
     </div>
 
     <div class="hero-block-mask"></div>
@@ -275,5 +253,3 @@
 
 </body>
 </html>
-
-

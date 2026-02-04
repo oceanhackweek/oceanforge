@@ -6,7 +6,7 @@ favicon: assets/images/favicon-16x16.png
 #  title: Applications Closed
 banner:
   description: A JupyterHub for Ocean Science Training.
-  images:
+  image:
     - assets/images/eastcoast_PACE_OCI_20240502T172807.png
     - assets/images/argo_buoy.jpeg
   interval_ms: 5000

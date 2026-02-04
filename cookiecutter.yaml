@@ -39,18 +39,20 @@ tools:
   items:
     - name: Python
       logo: assets/images/tools/python.png
-    - name: Julia
-      logo: assets/images/tools/julia.png
     - name: R
       logo: assets/images/tools/r.png
     - name: Jupyter
       logo: assets/images/tools/jupyter.png
     - name: xarray
       logo: assets/images/tools/xarray.png
+    - name: zarr
+      logo: assets/images/tools/zarr.jpg
+    - name: icechunk
+      logo: assets/images/tools/icechunk.svg
     - name: Dask
       logo: assets/images/tools/dask.png
-    - name: Pangeo
-      logo: assets/images/tools/pangeo.png
+    - name: GDAL
+      logo: assets/images/tools/gdal.png
 footer:
   social:
   - icon: github

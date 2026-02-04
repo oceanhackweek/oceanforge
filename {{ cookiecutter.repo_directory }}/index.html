@@ -169,13 +169,32 @@
         </div>
     </div>
 
-    <div class="media-block theme-bg-primary py-5">
-        <div class="container">
-            <h4 class="text-white text-center mb-3">
-            </br>
-            </h4>
+{%- if cookiecutter.tools is defined and cookiecutter.tools.items|length > 0 %}
+<div class="media-block theme-bg-primary py-5">
+    <div class="container">
+
+        <h4 class="text-white text-center mb-4">
+            {{ cookiecutter.tools.title }}
+        </h4>
+
+        <div class="tools-logos d-flex flex-wrap justify-content-center align-items-center">
+
+            {%- for tool in cookiecutter.tools.items %}
+            <div class="tool-logo">
+                <img
+                    src="{{ tool.logo }}"
+                    alt="{{ tool.name }}"
+                    title="{{ tool.name }}"
+                >
+            </div>
+            {%- endfor %}
+
         </div>
+
     </div>
+</div>
+{%- endif %}
+
 </section>
 <!--//about-section-->
 
@@ -213,36 +232,29 @@
 </section>
 {%- endif %}
 
-<footer class="footer py-5 theme-bg-primary">
+<footer class="footer py-3 theme-bg-primary">
     <div class="container text-center">
-        {%- if cookiecutter.footer.social is defined and cookiecutter.footer.social|length > 0 %}
-        <ul class="social-list list-inline mb-4">
-            {%- for soc in cookiecutter.footer.social %}
-            <li class="list-inline-item me-3">
-                <a href="{{ soc.link }}">
-                    <i class="fab fa-{{ soc.icon }}"></i>
-                </a>
-            </li>
-            {%- endfor %}
-        </ul>
-        {%- endif %}
 
-        <small class="copyright">©
+        <small class="copyright">
+            ©
             <script type="text/javascript">
                 document.write(new Date().getFullYear());
             </script>
             {{ cookiecutter.name }}
-        </small>
-        <br>
-        <small class="copyright">
-            Designed with <i class="fas fa-heart" style="color: #EC645E;"></i>
-            by
-            <a href="http://themes.3rdwavemedia.com" target="_blank">
-                Xiaoying Riley
-            </a> for developers
+
+            {%- if cookiecutter.footer.social is defined and cookiecutter.footer.social|length > 0 %}
+            <span class="footer-socials ms-3">
+                {%- for soc in cookiecutter.footer.social %}
+                <a href="{{ soc.link }}" class="ms-2" aria-label="{{ soc.icon }}">
+                    <i class="fab fa-{{ soc.icon }}"></i>
+                </a>
+                {%- endfor %}
+            </span>
+            {%- endif %}
         </small>
     </div>
 </footer>
+
 
 <!-- Javascript -->
 <script defer src="assets/plugins/popper.min.js"></script>

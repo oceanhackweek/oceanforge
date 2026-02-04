@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>{{ cookiecutter.name }}</title>
@@ -28,8 +28,9 @@
     <div class="branding">
         <div class="container-fluid">
             <nav class="main-nav navbar navbar-expand-lg">
+
                 <div class="lang-switch ms-auto">
-                    <a href="es/index.html">ES</a>
+                  <a href="../index.html">EN</a>
                 </div>
 
                 {# No top-left brand/logo #}
@@ -107,7 +108,14 @@
 
                                 {%- if cookiecutter.banner.links is defined and cookiecutter.banner.links %}
                                 <div class="hero-panel-cta">
-                                    {%- for link in cookiecutter.banner.links %}
+                                    {%- set banner_links = cookiecutter.i18n.es.banner.links
+                                        if cookiecutter.i18n is defined
+                                        and cookiecutter.i18n.es is defined
+                                        and cookiecutter.i18n.es.banner is defined
+                                        and cookiecutter.i18n.es.banner.links is defined
+                                        else cookiecutter.banner.links %}
+                                    
+                                    {%- for link in banner_links %}
                                     <a class="btn {{ link.style }} btn-lg"
                                        href="{{ link.url }}"
                                        {{ 'target="_blank"' if link.new_window else '' }}
@@ -167,14 +175,14 @@
 <!--//hero-block-->
 
 <section id="about-section" class="about-section section theme-bg-light">
-    <div class="container">
-        <h3 class="section-heading text-center mb-3">
-            About {{ cookiecutter.name }}
-        </h3>
-        <div class="section-intro single-col-max mx-auto mb-3">
-            {{ cookiecutter.about.description }}
-        </div>
+  <div class="container">
+    <h3 class="section-heading text-center mb-3">
+      {{ cookiecutter.i18n.es.about_title }}
+    </h3>
+    <div class="section-intro single-col-max mx-auto mb-3">
+      {{ cookiecutter.i18n.es.about_description }}
     </div>
+  </div>
 
     {%- if cookiecutter.tools is defined
           and cookiecutter.tools["items"] is defined

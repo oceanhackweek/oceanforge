@@ -63,16 +63,21 @@ header.header {
 .hero-panel-text {
     background-color: #000;
     color: #fff;
+
+    /* layout */
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 3rem;
 
-    /* IMPORTANT: ensure text panel is above mask */
+    /* ensure panel sits above mask */
     position: relative;
     z-index: 3;
 }
 
+/* Center + constrain content */
 .hero-panel-inner {
+    text-align: center;
     max-width: 560px;
 }
 
@@ -110,9 +115,24 @@ header.header {
     margin-bottom: 0.4rem;
 }
 
+.hero-panel-cta {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: nowrap; /* keep buttons side-by-side on phones */
+}
+
+/* Button sizing */
 .hero-panel-cta .btn {
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+    white-space: nowrap; /* prevent awkward wrapping inside buttons */
+}
+
+/* Mobile button sizing */
+@media (max-width: 420px) {
+    .hero-panel-cta .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
 }
 
 /* Right panel image */
@@ -304,3 +324,23 @@ header.header {
     }
 }
 
+/* =========================================================
+   Language switch (EN | ES)
+   ========================================================= */
+
+.lang-switch {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.lang-switch a {
+    color: #ffffff;
+    opacity: 0.85;
+    text-decoration: none;
+}
+
+.lang-switch a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{ cookiecutter.name }}</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ cookiecutter.banner.description }}">
+    <meta name="author" content="{{ cookiecutter.name }}">
+    <link rel="shortcut icon" href="{{ cookiecutter.favicon }}">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800|Roboto:300,400,700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome JS-->
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+<header id="header" class="header fixed-top">
+    <div class="branding">
+        <div class="container-fluid">
+            <nav class="main-nav navbar navbar-expand-lg">
+
+                {# No top-left brand/logo #}
+
+                {%- if cookiecutter.apply is defined %}
+                <div class="navbar-btn order-lg-2">
+                    <a class="btn btn-secondary"
+                       {%- if cookiecutter.apply.url is defined and cookiecutter.apply.url %}
+                       href="{{ cookiecutter.apply.url }}"
+                       target="_blank"
+                       {%- endif %}
+                    >
+                    {{ cookiecutter.apply.title }}
+                    </a>
+                </div>
+                {%- endif %}
+
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#navigation"
+                        aria-controls="navigation" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="navigation"
+                     class="navbar-collapse collapse justify-content-lg-end me-lg-3">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link scrollto" href="#about-section">
+                                About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link scrollto" href="#sponsors-section">
+                                Sponsors and Partners
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--//main-nav-->
+        </div>
+    </div>
+    <!--//branding-->
+</header>
+
+<div id="hero-block" class="hero-block">
+    <div id="hero-carousel"
+         class="hero-carousel carousel slide carousel-fade"
+         data-bs-ride="carousel"
+         data-bs-interval="{{ cookiecutter.banner.interval_ms | default(5000) }}"
+         data-bs-pause="false"
+         data-bs-touch="false">
+
+        <div class="carousel-inner">
+
+            {%- if cookiecutter.banner.image is defined and cookiecutter.banner.image|length > 0 %}
+                {%- for img in cookiecutter.banner.image %}
+                <div class="carousel-item {% if loop.first %}active{% endif %}">
+                    <div class="hero-split" aria-hidden="true">
+                        <!-- Left: black panel -->
+                        <div class="hero-panel-text">
+                            <div class="hero-panel-inner">
+<!--                            <h1 class="hero-panel-title">{{ cookiecutter.name }}</h1>   -->
+                            <div class="hero-logo-wrap">
+                                <img
+                                    src="assets/images/logos/oceanforge.png"
+                                    alt="{{ cookiecutter.name }} logo"
+                                    class="hero-logo"
+                                >
+                            </div>
+                                <div class="hero-panel-desc">
+                                    {{ cookiecutter.banner.description }}
+                                </div>
+
+                                {%- if cookiecutter.banner.links is defined and cookiecutter.banner.links %}
+                                <div class="hero-panel-cta">
+                                    {%- for link in cookiecutter.banner.links %}
+                                    <a class="btn {{ link.style }} btn-lg"
+                                       href="{{ link.url }}"
+                                       {{ 'target="_blank"' if link.new_window else '' }}
+                                    >
+                                    {{ link.title }}
+                                    </a>
+                                    {%- endfor %}
+                                </div>
+                                {%- endif %}
+                            </div>
+                        </div>
+
+                        <!-- Right: rotating image -->
+                        <div class="hero-panel-image" style="background-image: url('{{ img }}');"></div>
+                    </div>
+                </div>
+                {%- endfor %}
+            {%- else %}
+                <div class="carousel-item active">
+                    <div class="hero-split" aria-hidden="true">
+                        <div class="hero-panel-text">
+                            <div class="hero-panel-inner">
+                                <h1 class="hero-panel-title">{{ cookiecutter.name }}</h1>
+                                <div class="hero-panel-desc">{{ cookiecutter.banner.description }}</div>
+
+                                {%- if cookiecutter.banner.links is defined and cookiecutter.banner.links %}
+                                <div class="hero-panel-cta">
+                                    {%- for link in cookiecutter.banner.links %}
+                                    <a class="btn {{ link.style }} btn-lg"
+                                       href="{{ link.url }}"
+                                       {{ 'target="_blank"' if link.new_window else '' }}>
+                                        {{ link.title }}
+                                    </a>
+                                    {%- endfor %}
+                                </div>
+                                {%- endif %}
+                            </div>
+                        </div>
+
+                        <div class="hero-panel-image" style="background-color: #141c25;"></div>
+                    </div>
+                </div>
+            {%- endif %}
+
+        </div>
+        {# No carousel arrows/controls #}
+    </div>
+
+    <div class="hero-block-mask"></div>
+
+    <div class="container">
+        <div class="hero-text-block">
+            <!-- Hidden via main.css; kept for theme compatibility -->
+        </div>
+    </div>
+</div>
+<!--//hero-block-->
+
+<section id="about-section" class="about-section section theme-bg-light">
+    <div class="container">
+        <h3 class="section-heading text-center mb-3">
+            About {{ cookiecutter.name }}
+        </h3>
+        <div class="section-intro single-col-max mx-auto mb-3">
+            {{ cookiecutter.about.description }}
+        </div>
+    </div>
+
+    {%- if cookiecutter.tools is defined
+          and cookiecutter.tools["items"] is defined
+          and cookiecutter.tools["items"]|length > 0 %}
+    <div class="media-block theme-bg-primary py-5">
+        <div class="container">
+            <div class="tools-logos d-flex flex-wrap justify-content-center align-items-center">
+                
+                {%- for tool in cookiecutter.tools["items"] %}
+                <div class="tool-logo">
+                    <img
+                        src="{{ tool.logo }}"
+                        alt="{{ tool.name }}"
+                        title="{{ tool.name }}"
+                        loading="lazy"
+                    >
+                </div>
+                {%- endfor %}
+    
+            </div>
+    
+        </div>
+    </div>
+    {%- endif %}
+
+</section>
+<!--//about-section-->
+
+{%- if cookiecutter.sponsors is defined and cookiecutter.sponsors %}
+<section id="sponsors-section" class="sponsors-section section theme-bg-light">
+    <div class="container">
+        <h3 class="section-heading text-center mb-3">Our Sponsors and Partners</h3>
+
+        {%- if cookiecutter.sponsors.description is defined and cookiecutter.sponsors.description %}
+        <div class="section-intro text-center single-col-max mx-auto mb-5">
+            {{ cookiecutter.sponsors.description }}
+        </div>
+        {%- endif %}
+
+        {%- if cookiecutter.sponsors.organizations is defined and cookiecutter.sponsors.organizations|length > 0 %}
+        <div class="row logos justify-content-center">
+            {%- for org in cookiecutter.sponsors.organizations %}
+            <div class="logo-item col-6 col-md-4 col-lg-2">
+                {%- if org.website %}
+                <a href="{{ org.website }}" target="_blank"><img
+                    src="{{ org.logo_url }}"
+                    alt="{{ org.name }}"></a>
+                {%- else %}
+                <img src="{{ org.logo_url }}" alt="{{ org.name }}">
+                {%- endif %}
+            </div>
+            {%- endfor %}
+        </div>
+        {%- endif %}
+    </div>
+</section>
+{%- endif %}
+
+<footer class="footer py-3 theme-bg-primary">
+    <div class="container text-center">
+
+        <small class="copyright">
+            ©
+            <script type="text/javascript">
+                document.write(new Date().getFullYear());
+            </script>
+            {{ cookiecutter.name }}
+
+            {%- if cookiecutter.footer.social is defined and cookiecutter.footer.social|length > 0 %}
+            <span class="footer-socials ms-3">
+                {%- for soc in cookiecutter.footer.social %}
+                <a href="{{ soc.link }}" class="ms-2" aria-label="{{ soc.icon }}">
+                    <i class="fab fa-{{ soc.icon }}"></i>
+                </a>
+                {%- endfor %}
+            </span>
+            {%- endif %}
+        </small>
+    </div>
+</footer>
+
+
+<!-- Javascript -->
+<script defer src="assets/plugins/popper.min.js"></script>
+<script defer src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script defer src="assets/plugins/smoothscroll.min.js"></script>
+<script defer src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+<script defer src="assets/js/main.js"></script>
+
+</body>
+</html>

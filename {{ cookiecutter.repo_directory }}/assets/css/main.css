@@ -343,3 +343,14 @@ header.header {
 .hero-block-mask {
   pointer-events: none;
 }
+
+.hero-block { position: relative; }
+
+.hero-carousel { z-index: 0; pointer-events: none; }
+.hero-block-mask { z-index: 1; pointer-events: none; }
+
+.hero-split { z-index: 2; }
+.hero-panel-text { z-index: 5; }
+
+.hero-panel-text,
+.hero-panel-text * { pointer-events: auto; }

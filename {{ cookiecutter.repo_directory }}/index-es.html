@@ -169,7 +169,9 @@
 {%- if cookiecutter.sponsors is defined and cookiecutter.sponsors %}
 <section id="sponsors-section" class="sponsors-section section theme-bg-light">
     <div class="container">
-        <h3 class="section-heading text-center mb-3">Our Sponsors and Partners</h3>
+        <h3 class="section-heading text-center mb-3">
+          {{ cookiecutter.i18n.es.sponsors_title | default("Nuestros patrocinadores y socios") }}
+        </h3>
 
         {%- if cookiecutter.sponsors.description is defined and cookiecutter.sponsors.description %}
         <div class="section-intro text-center single-col-max mx-auto mb-5">

@@ -1,9 +1,6 @@
 repo_directory: html
 name: OceanForge
 favicon: assets/images/logos/favicon-96x96.png
-#apply:
-#  url: https://forms.gle/4DEZMv2CxyyR6Cxz9
-#  title: Applications Closed
 banner:
   description: ""
   image:
@@ -17,7 +14,7 @@ banner:
   interval_ms: 4000
   banner:
   links:
-  - url: intro.html
+  - url: ''
     title: Documentation
     new_window: false
     style: btn-primary

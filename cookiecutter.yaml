@@ -60,10 +60,25 @@ tools:
       logo: assets/images/tools/dask.png
     - name: GDAL
       logo: assets/images/tools/gdal.png
+    - name: pandas
+      logo: assets/images/tools/pandas.png
+    - name: geopandas
+      logo: assets/images/tools/geopandas.png
+    - name: parquet
+      logo: assets/images/tools/parquet.png
+    - name: tensorflow
+      logo: assets/images/tools/tensorflow.png
+    - name: pytorch
+      logo: assets/images/tools/pytorch.png
+    - name: rspatial
+      logo: assets/images/tools/rspatial.png
+    - name: tidyverse
+      logo: assets/images/tools/tidyverse.png      
 footer:
   social:
   - icon: github
-    link: https://github.com/oceanhackweek
+    link: https://github.com/oceanhackweek/oceanforge
+  
 _copy_without_render:
 - assets
 _extensions:

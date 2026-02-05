@@ -326,3 +326,20 @@ header.header {
   }
 }
 
+/* --- Fix clickability: ensure hero content is above the mask --- */
+.hero-split {
+  z-index: 2;            /* ABOVE the mask */
+}
+
+.hero-panel-text {
+  z-index: 3;            /* ABOVE everything in hero */
+}
+
+.hero-panel-image {
+  z-index: 2;
+}
+
+/* Mask should never intercept clicks */
+.hero-block-mask {
+  pointer-events: none;
+}

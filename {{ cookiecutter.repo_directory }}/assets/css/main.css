@@ -244,11 +244,13 @@ header.header {
    Sponsors logos (consistent height)
    ========================================================= */
 
+/* Kill Bootstrap column spacing for sponsor logos */
 .sponsors-section .logo-item {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0;        /* remove extra padding */
 }
 
 .sponsors-section .logo-item a {
@@ -264,6 +266,14 @@ header.header {
   object-fit: contain;
   display: block;
 }
+
+.sponsors-section .logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;          /* controls spacing between logos */
+}
+
 
 /* =========================================================
    Responsive behavior

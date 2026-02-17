@@ -1,4 +1,4 @@
-# Welcome to the NMFS Openscapes JupyterHub!
+# Welcome to the JupyterHub!
 
 ![banner](img/banner.png)
 

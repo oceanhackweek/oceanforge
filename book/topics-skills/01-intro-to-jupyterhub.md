@@ -45,7 +45,7 @@ When you are in the JupyterLab tab (note the Jupyter Logo), you will see a Launc
 ![Jupyterhub Launcher](./img/jhub-launcher.png)
 Clicking on the "Python 3", Terminal, Text File and Markdown File buttons will open a new tab in JupyterLab. You can also use the File dropdown menu for these.
 
-To get an overview of JupyterLab, go here: [Intro to JupyterLab](./content/02-intro-to-lab.html) 
+To get an overview of JupyterLab, go here: [Intro to JupyterLab](./02-intro-to-lab.md) 
 
 ## RStudio
 
@@ -53,7 +53,7 @@ If you click the RStudio button in Launcher, RStudio will open in a new browser 
 
 ![RStudio](./img/rstudio.png)
 
-To get an overview of RStudio, go here: [Intro to RStudio](./content/02-rstudio.html) 
+To get an overview of RStudio, go here: [Intro to RStudio](./02-rstudio.md) 
 
 ## End your session
 

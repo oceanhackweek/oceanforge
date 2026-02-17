@@ -48,9 +48,9 @@ Once your server starts, you'll see the JupyterLab interface with a Launcher sho
 
 Now that you're up and running:
 
-1. **Learn JupyterLab basics**: See [Intro to JupyterLab](02-intro-to-lab.md)
-2. **Learn RStudio basics**: See [RStudio](02-rstudio.md)
-3. **Set up Git**: See [Git in JupyterLab](02-git-jupyter.md)
+1. **Learn JupyterLab basics**: See [Intro to JupyterLab](../topics-skills/02-intro-to-lab.md)
+2. **Learn RStudio basics**: See [RStudio](../topics-skills/02-rstudio.md)
+3. **Set up Git**: See [Git in JupyterLab](../topics-skills/02-git-jupyter.md)
 4. **Explore tutorials**: Browse the skills sections in the navigation
 
 ## Important Notes
@@ -64,7 +64,7 @@ Now that you're up and running:
 
 If you run into issues:
 
-- Check the [FAQ](../topics-skills/01-intro-to-jupyterhub.md#faq)
+- Check the [FAQ](../topics-skills/01-intro-to-jupyterhub.md)
 - Post in [Discussions](https://github.com/nmfs-opensci/NOAAHackDays/discussions)
 - Report bugs in [Issues](https://github.com/nmfs-opensci/NOAAHackDays/issues)
 

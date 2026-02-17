@@ -11,9 +11,9 @@ title: Basic Git/GitHub Skills in RStudio
 
 ## Prerequisites
 
-- Read [Intro to Git](topics-skills/02-git.html)
+- Read [Intro to Git](02-git.md)
 - Have a [GitHub](https://github.com/) account
-- [Git Authentication](topics-skills/02-git-authentication.html)
+- [Git Authentication](02-git-authentication.md)
 
 :::
 
@@ -26,7 +26,7 @@ information for how to create your user account and you will find lots of inform
 
 ## Setting up Git Authentication
 
-Before we can work with Git in the JupyterHub, your need to do some set up. Do the steps here: [Git Authentication](topics-skills/02-git-authentication.html)
+Before we can work with Git in the JupyterHub, your need to do some set up. Do the steps here: [Git Authentication](02-git-authentication.md)
 
 ## Git tab in RStudio
 

@@ -2,20 +2,16 @@
 title: Basic Git/GitHub Skills in JupyterLab git GUI
 ---
 
-::: {.callout-note icon=false}
-
-## Learning Objectives
-
-- Learn how to use the Git GUI in JupyterLab
-- Practice 4 basic Git/GitHub skills: cloning, committing, push/pull
-
-## Prerequisites
-
-- Read [Intro to Git](topics-skills/02-git.html)
-- Have a [GitHub](https://github.com/) account
-- [Git Authentication](topics-skills/02-git-authentication.html)
-
-:::
+> **Learning Objectives**
+>
+> - Learn how to use the Git GUI in JupyterLab
+> - Practice 4 basic Git/GitHub skills: cloning, committing, push/pull
+>
+> **Prerequisites**
+>
+> - Read [Intro to Git](02-git.md)
+> - Have a [GitHub](https://github.com/) account
+> - [Git Authentication](02-git-authentication.md)
 
 ## Create a GitHub account
 
@@ -26,7 +22,7 @@ information for how to create your user account and you will find lots of inform
 
 ## Setting up Git Authentication
 
-Before we can work with Git in the JupyterHub, your need to authenticate. Do the steps here: [Git Authentication](topics-skills/02-git-authentication.html)
+Before we can work with Git in the JupyterHub, your need to authenticate. Do the steps here: [Git Authentication](02-git-authentication.md)
 
 ## Git extension in JupyterLab
 

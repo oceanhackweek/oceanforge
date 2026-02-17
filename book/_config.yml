@@ -1,8 +1,8 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: NMFS Openscapes JupyterHub Guide
-author: NMFS Openscapes
+title: JupyterHub Guide
+author: OceanHackWeek
 logo: logo.png
 only_build_toc_files: false
 
@@ -11,7 +11,7 @@ parse:
   # https://jupyterbook.org/content/content-blocks.html#using-substitutions-in-links
   myst_substitutions:
     jupyterhub_url: "https://nmfs-openscapes.2i2c.cloud"
-    contact_email: "nmfs.openscapes@noaa.gov"
+    contact_email: ""
     github_org_url: "https://github.com/oceanhackweek"
     book_repo: "oceanforge"
     website_url: "https://oceanhackweek.github.io/oceanforge/"
@@ -69,5 +69,5 @@ html:
   use_edit_page_button: true
   use_issues_button: true
   use_repository_button: true
-  favicon: "img/favicon-16x16.png"
+  favicon: "img/ohw-favicon.png"
   # google_analytics_id: G-XXXXXXXXX

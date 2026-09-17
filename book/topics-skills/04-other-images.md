@@ -4,8 +4,7 @@ title: Using other images on the JupyterHub
 
 ## Other images on the hub
 
-Use the dropdown to select a non-default image on the hub. There are a variety. You can learn about
-them on the [NMFS Open Science container images](https://nmfs-opensci.github.io/container-images/) repo.
+Use the dropdown to select a non-default image on the hub. 
 
 ![](img/jhub-images.png)
 
